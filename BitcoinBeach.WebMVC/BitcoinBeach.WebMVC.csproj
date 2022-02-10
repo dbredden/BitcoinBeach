@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,6 +235,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\Unit\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -259,6 +262,10 @@
     <ProjectReference Include="..\BitcoinBeach.Models\BitcoinBeach.Models.csproj">
       <Project>{629dd792-f84b-4b0c-9a0c-062ae0c2c04e}</Project>
       <Name>BitcoinBeach.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitcoinBeach.Services\BitcoinBeach.Services.csproj">
+      <Project>{657AC124-301B-49E7-9609-E349F25ED017}</Project>
+      <Name>BitcoinBeach.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -55,10 +55,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BitcoinBeach.Data\BitcoinBeach.Data.csproj">
+      <Project>{772da50d-7be3-43a7-86ff-e797bae4c95d}</Project>
+      <Name>BitcoinBeach.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitcoinBeach.Models\BitcoinBeach.Models.csproj">
+      <Project>{629dd792-f84b-4b0c-9a0c-062ae0c2c04e}</Project>
+      <Name>BitcoinBeach.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
