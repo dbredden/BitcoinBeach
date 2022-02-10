@@ -13,6 +13,9 @@ namespace BitcoinBeach.Data
         public int UnitId { get; set; }
 
         [Required]
+        public Guid OwnerId { get; set; }
+
+        [Required]
         [MaxLength(100, ErrorMessage = "Shorten your title.")]
         public string Title { get; set; }
 
