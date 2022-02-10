@@ -263,6 +263,10 @@
       <Project>{629dd792-f84b-4b0c-9a0c-062ae0c2c04e}</Project>
       <Name>BitcoinBeach.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BitcoinBeach.Services\BitcoinBeach.Services.csproj">
+      <Project>{657AC124-301B-49E7-9609-E349F25ED017}</Project>
+      <Name>BitcoinBeach.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

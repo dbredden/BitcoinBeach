@@ -1,4 +1,6 @@
 ﻿using BitcoinBeach.Models;
+using BitcoinBeach.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace BitcoinBeach.WebMVC.Controllers
         // GET: Unit
         public ActionResult Index()
         {
-            var model = new UnitListItem[0];
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new UnitService(userId);
+            var model = service.GetUnits();
+
             return View(model);
         }
 
@@ -29,9 +34,15 @@ namespace BitcoinBeach.WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                return View(model);
             }
-            return View(model);
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new UnitService(userId);
+
+            service.CreateUnit(model);
+
+            return RedirectToAction("Index");
         }
     }
 }
