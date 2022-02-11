@@ -32,17 +32,22 @@ namespace BitcoinBeach.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create (UnitCreate model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+           
+            var service = CreateUnitService();
+
+            if (service.CreateUnit(model))
             {
-                return View(model);
-            }
+                TempData["SaveResult"] = "Your unit was successfully created.";
+                return RedirectToAction("Index");
+            };
 
-            UnitService service = CreateUnitService();
+            ModelState.AddModelError("", "Your unit could not be created.");
 
-            service.CreateUnit(model);
-
-            return RedirectToAction("Index");
+            return View(model);
         }
+
+
 
         private UnitService CreateUnitService()
         {
