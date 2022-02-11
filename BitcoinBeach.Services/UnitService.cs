@@ -60,5 +60,27 @@ namespace BitcoinBeach.Services
             }
         }
 
+        public UnitDetail GetUnitById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Units
+                        .Single(e => e.UnitId == id && e.OwnerId == _userId);
+                    return
+                        new UnitDetail
+                        {
+                            Title = entity.Title,
+                            Description = entity.Description,
+                            Address = entity.Address,
+                            Price = entity.Price,
+                            Guests = entity.Guests,
+                            Beds = entity.Beds,
+                            Bathrooms = entity.Bathrooms
+                        };
+            }
+        }
+
     }
 }
