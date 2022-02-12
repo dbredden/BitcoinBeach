@@ -82,5 +82,26 @@ namespace BitcoinBeach.Services
             }
         }
 
+        public bool UpdateUnit(UnitEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Units
+                        .Single(e => e.UnitId == model.UnitId && e.OwnerId == _userId);
+
+                entity.Title = model.Title;
+                entity.Description = model.Description;
+                entity.Address = model.Address;
+                entity.Price = model.Price;
+                entity.Guests = model.Guests;
+                entity.Beds = model.Beds;
+                entity.Bathrooms = model.Bathrooms;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

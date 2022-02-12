@@ -55,6 +55,23 @@ namespace BitcoinBeach.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateUnitService();
+            var detail = service.GetUnitById(id);
+            var model =
+                new UnitEdit
+                {
+                    Title = detail.Title,
+                    Description = detail.Description,
+                    Address = detail.Address,
+                    Price = detail.Price,
+                    Guests = detail.Guests,
+                    Beds = detail.Beds,
+                    Bathrooms = detail.Bathrooms
+                };
+            return View(model);
+        }
 
         private UnitService CreateUnitService()
         {
