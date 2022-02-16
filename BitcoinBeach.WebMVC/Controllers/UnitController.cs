@@ -62,6 +62,7 @@ namespace BitcoinBeach.WebMVC.Controllers
             var model =
                 new UnitEdit
                 {
+                    UnitId = detail.UnitId,
                     Title = detail.Title,
                     Description = detail.Description,
                     Address = detail.Address,
@@ -71,6 +72,52 @@ namespace BitcoinBeach.WebMVC.Controllers
                     Bathrooms = detail.Bathrooms
                 };
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, UnitEdit model)
+        {
+            if (!ModelState.IsValid) return View(model); 
+
+            if(model.UnitId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateUnitService();
+
+            if (service.UpdateUnit(model))
+            {
+                TempData["SaveResult"] = "Your Unit was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your note could not be updated.");
+            return View();
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateUnitService();
+            var model = svc.GetUnitById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateUnitService();
+
+            service.DeleteUnit(id);
+
+            TempData["SaveResult"] = "Your unit listing was deleted.";
+
+            return RedirectToAction("Index");
         }
 
         private UnitService CreateUnitService()

@@ -103,5 +103,20 @@ namespace BitcoinBeach.Services
             }
         }
 
+        public bool DeleteUnit(int unitId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Units
+                        .Single(e => e.UnitId == unitId && e.OwnerId == _userId);
+
+                ctx.Units.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

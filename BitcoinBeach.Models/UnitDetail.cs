@@ -9,6 +9,8 @@ namespace BitcoinBeach.Models
 {
     public class UnitDetail
     {
+        public int UnitId { get; set; }
+
         [Display(Name="Rental Unit Title")]
         public string Title { get; set; }
 
