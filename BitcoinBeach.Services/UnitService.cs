@@ -60,5 +60,63 @@ namespace BitcoinBeach.Services
             }
         }
 
+        public UnitDetail GetUnitById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Units
+                        .Single(e => e.UnitId == id && e.OwnerId == _userId);
+                    return
+                        new UnitDetail
+                        {
+                            Title = entity.Title,
+                            Description = entity.Description,
+                            Address = entity.Address,
+                            Price = entity.Price,
+                            Guests = entity.Guests,
+                            Beds = entity.Beds,
+                            Bathrooms = entity.Bathrooms
+                        };
+            }
+        }
+
+        public bool UpdateUnit(UnitEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Units
+                        .Single(e => e.UnitId == model.UnitId && e.OwnerId == _userId);
+
+                entity.Title = model.Title;
+                entity.Description = model.Description;
+                entity.Address = model.Address;
+                entity.Price = model.Price;
+                entity.Guests = model.Guests;
+                entity.Beds = model.Beds;
+                entity.Bathrooms = model.Bathrooms;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteUnit(int unitId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Units
+                        .Single(e => e.UnitId == unitId && e.OwnerId == _userId);
+
+                ctx.Units.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }
