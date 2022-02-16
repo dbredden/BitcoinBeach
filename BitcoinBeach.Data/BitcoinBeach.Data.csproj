@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202202100214032_AddedOwnerIdToUnit.Designer.cs">
       <DependentUpon>202202100214032_AddedOwnerIdToUnit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202160338056_ProfileMigration.cs" />
+    <Compile Include="Migrations\202202160338056_ProfileMigration.Designer.cs">
+      <DependentUpon>202202160338056_ProfileMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202100214032_AddedOwnerIdToUnit.resx">
       <DependentUpon>202202100214032_AddedOwnerIdToUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202160338056_ProfileMigration.resx">
+      <DependentUpon>202202160338056_ProfileMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
