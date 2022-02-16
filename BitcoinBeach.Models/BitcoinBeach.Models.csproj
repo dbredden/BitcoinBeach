@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProfileCreate.cs" />
+    <Compile Include="ProfileListItem.cs" />
     <Compile Include="ProfileType.cs" />
     <Compile Include="UnitEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
