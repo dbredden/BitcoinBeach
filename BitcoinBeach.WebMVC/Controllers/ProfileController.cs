@@ -54,6 +54,68 @@ namespace BitcoinBeach.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var service = CreateProfileService();
+            var detail = service.GetProfileById(id);
+            var model =
+                new ProfileEdit
+                {
+                    ProfileId = detail.ProfileId,
+                    FirstName = detail.FirstName,
+                    LastName = detail.LastName,
+                    Email = detail.Email,
+                    PhoneNumber = detail.PhoneNumber
+                };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ProfileEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(model.ProfileId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateProfileService();
+
+            if (service.UpdateProfile(model))
+            {
+                TempData["SaveResult"] = "The Profile was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your profile could not be updated.");
+            return View(model);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateProfileService();
+            var model = svc.GetProfileById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteProfile(int id)
+        {
+            var service = CreateProfileService();
+
+            service.DeleteProfile(id);
+
+            TempData["SaveResult"] = "The account was deleted";
+
+            return RedirectToAction("Index");
+        }
+
         private ProfileService CreateProfileService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

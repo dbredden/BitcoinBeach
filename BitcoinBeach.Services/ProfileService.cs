@@ -81,5 +81,38 @@ namespace BitcoinBeach.Services
                         };
             }
         }
+
+        public bool UpdateProfile(ProfileEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Profiles
+                        .Single(e => e.ProfileId == model.ProfileId && e.OwnerId == _userId);
+
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.Email = model.Email;
+                entity.PhoneNumber = model.PhoneNumber;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteProfile(int ProfileId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Profiles
+                        .Single(e => e.ProfileId == ProfileId && e.OwnerId == _userId);
+
+                ctx.Profiles.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
