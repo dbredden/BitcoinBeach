@@ -3,10 +3,34 @@ namespace BitcoinBeach.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Profile",
+                c => new
+                    {
+                        ProfileId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Email = c.String(),
+                        PhoneNumber = c.String(),
+                        ProfileType_Id = c.Byte(),
+                    })
+                .PrimaryKey(t => t.ProfileId)
+                .ForeignKey("dbo.ProfileType", t => t.ProfileType_Id)
+                .Index(t => t.ProfileType_Id);
+            
+            CreateTable(
+                "dbo.ProfileType",
+                c => new
+                    {
+                        Id = c.Byte(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.IdentityRole",
                 c => new
@@ -36,6 +60,7 @@ namespace BitcoinBeach.Data.Migrations
                 c => new
                     {
                         UnitId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
                         Title = c.String(nullable: false, maxLength: 100),
                         Description = c.String(nullable: false),
                         Address = c.String(nullable: false),
@@ -100,16 +125,20 @@ namespace BitcoinBeach.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Profile", "ProfileType_Id", "dbo.ProfileType");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Profile", new[] { "ProfileType_Id" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.Unit");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.ProfileType");
+            DropTable("dbo.Profile");
         }
     }
 }

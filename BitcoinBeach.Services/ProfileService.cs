@@ -60,5 +60,26 @@ namespace BitcoinBeach.Services
                 return query.ToArray();
             }
         }
+
+        public ProfileDetail GetProfileById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Profiles
+                        .Single(e => e.ProfileId == id && e.OwnerId == _userId);
+                    return
+                        new ProfileDetail
+                        {
+                            ProfileId = entity.ProfileId,
+                            FirstName = entity.FirstName,
+                            LastName = entity.LastName,
+                            Email = entity.Email,
+                            PhoneNumber = entity.PhoneNumber,
+                            ProfileType = entity.ProfileType
+                        };
+            }
+        }
     }
 }

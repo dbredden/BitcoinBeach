@@ -46,6 +46,14 @@ namespace BitcoinBeach.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateProfileService();
+            var model = svc.GetProfileById(id);
+
+            return View(model);
+        }
+
         private ProfileService CreateProfileService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

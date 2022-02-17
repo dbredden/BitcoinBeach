@@ -55,17 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202202100016237_InitialCreate.cs" />
-    <Compile Include="Migrations\202202100016237_InitialCreate.Designer.cs">
-      <DependentUpon>202202100016237_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202100214032_AddedOwnerIdToUnit.cs" />
-    <Compile Include="Migrations\202202100214032_AddedOwnerIdToUnit.Designer.cs">
-      <DependentUpon>202202100214032_AddedOwnerIdToUnit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202160338056_ProfileMigration.cs" />
-    <Compile Include="Migrations\202202160338056_ProfileMigration.Designer.cs">
-      <DependentUpon>202202160338056_ProfileMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202202170134258_InitialMigration.cs" />
+    <Compile Include="Migrations\202202170134258_InitialMigration.Designer.cs">
+      <DependentUpon>202202170134258_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Profile.cs" />
@@ -77,21 +69,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202100016237_InitialCreate.resx">
-      <DependentUpon>202202100016237_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202100214032_AddedOwnerIdToUnit.resx">
-      <DependentUpon>202202100214032_AddedOwnerIdToUnit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202160338056_ProfileMigration.resx">
-      <DependentUpon>202202160338056_ProfileMigration.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BitcoinBeach.Models\BitcoinBeach.Models.csproj">
       <Project>{629DD792-F84B-4B0C-9A0C-062AE0C2C04E}</Project>
       <Name>BitcoinBeach.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202202170134258_InitialMigration.resx">
+      <DependentUpon>202202170134258_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
