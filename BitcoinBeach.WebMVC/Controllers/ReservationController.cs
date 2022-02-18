@@ -93,6 +93,29 @@ namespace BitcoinBeach.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateReservationService();
+            var model = svc.GetReservationById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteReservation(int id)
+        {
+            var service = CreateReservationService();
+
+            service.DeleteReservation(id);
+
+            TempData["SaveResult"] = "The reservation was deleted";
+
+            return RedirectToAction("Index");
+        }
+
+
         private ReservationService CreateReservationService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
