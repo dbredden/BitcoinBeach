@@ -44,6 +44,14 @@ namespace BitcoinBeach.WebMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            var svc = CreateReservationService();
+            var model = svc.GetReservationById(id);
+
+            return View(model);
+        }
+
         private ReservationService CreateReservationService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

@@ -63,6 +63,7 @@
     <Compile Include="ProfileListItem.cs" />
     <Compile Include="ProfileType.cs" />
     <Compile Include="ReservationCreate.cs" />
+    <Compile Include="ReservationDetail.cs" />
     <Compile Include="ReservationListItem.cs" />
     <Compile Include="UnitEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

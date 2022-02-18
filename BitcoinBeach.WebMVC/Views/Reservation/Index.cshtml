@@ -46,9 +46,9 @@
             @Html.DisplayFor(modelItem => item.ReservationEndDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReservationId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ReservationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ReservationId })
         </td>
     </tr>
 }

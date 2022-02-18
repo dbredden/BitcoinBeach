@@ -56,5 +56,25 @@ namespace BitcoinBeach.Services
                 return query.ToArray();
             }
         }
+
+        public ReservationDetail GetReservationById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Reservations
+                        .Single(e => e.ReservationId == id && e.OwnerId == _userId);
+                return
+                    new ReservationDetail
+                    {
+                        ReservationId = entity.ReservationId,
+                        ProfileId = entity.ProfileId,
+                        UnitId = entity.UnitId,
+                        ReservationStartDate = entity.ReservationStartDate,
+                        ReservationEndDate = entity.ReservationEndDate
+                    };
+            }
+        }
     }
 }
