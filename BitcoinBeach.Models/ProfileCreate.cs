@@ -25,6 +25,8 @@ namespace BitcoinBeach.Models
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        public ProfileType ProfileType { get; set; }
+        [Required]
+        [Display(Name = "Account Type")]
+        public AccountType AccountType { get; set; }
     }
 }

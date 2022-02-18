@@ -19,6 +19,9 @@ namespace BitcoinBeach.Services
 
         public bool CreateProfile(ProfileCreate model)
         {
+            var profileType = new ProfileType();
+            profileType.type = model.AccountType;
+
             var entity =
                 new Profile()
                 {
@@ -27,7 +30,7 @@ namespace BitcoinBeach.Services
                     LastName = model.LastName,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
-                    ProfileType = model.ProfileType
+                    ProfileType = profileType
                 };
 
             using (var ctx = new ApplicationDbContext())
