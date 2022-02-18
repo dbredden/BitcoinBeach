@@ -76,5 +76,24 @@ namespace BitcoinBeach.Services
                     };
             }
         }
+
+        public bool UpdateReservation(ReservationEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Reservations
+                        .Single(e => e.ReservationId == model.ReservationId && e.OwnerId == _userId);
+
+                entity.ReservationId = model.ReservationId;
+                entity.ProfileId = model.ProfileId;
+                entity.UnitId = model.UnitId;
+                entity.ReservationStartDate = model.ReservationStartDate;
+                entity.ReservationEndDate = model.ReservationEndDate;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
