@@ -54,6 +54,10 @@ namespace BitcoinBeach.Services
                                     UnitId = e.UnitId,
                                     Title = e.Title,
                                     Address = e.Address,
+                                    Price = e.Price,
+                                    Guests = e.Guests,
+                                    Beds = e.Beds,
+                                    Bathrooms = e.Bathrooms
                                 }
                         );
                 return query.ToArray();

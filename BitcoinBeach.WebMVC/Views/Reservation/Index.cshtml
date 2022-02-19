@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BitcoinBeach.Models.ReservationListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@if(TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReservationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReservationStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReservationEndDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReservationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReservationStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReservationEndDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReservationId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ReservationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ReservationId })
+        </td>
+    </tr>
+}
+
+</table>

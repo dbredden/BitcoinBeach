@@ -33,6 +33,9 @@ namespace BitcoinBeach.Data
         }
 
         public DbSet<Unit> Units { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

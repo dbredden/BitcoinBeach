@@ -10,18 +10,18 @@ using System.Web.Mvc;
 namespace BitcoinBeach.WebMVC.Controllers
 {
     [Authorize]
-    public class ProfileController : Controller
+    public class ReservationController : Controller
     {
-        // GET: Profile
+        // GET: Reservation
         public ActionResult Index()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ProfileService(userId);
-            var model = service.GetProfiles();
+            var service = new ReservationService(userId);
+            var model = service.GetReservations();
 
             return View(model);
         }
-        // GET
+
         public ActionResult Create()
         {
             return View();
@@ -29,75 +29,74 @@ namespace BitcoinBeach.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ProfileCreate model)
+        public ActionResult Create(ReservationCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            var service = CreateProfileService();
+            var service = CreateReservationService();
 
-            if (service.CreateProfile(model))
+            if (service.CreateReservation(model))
             {
-                TempData["SaveResult"] = "New profile was created.";
+                TempData["SaveResult"] = "The reservation was created.";
                 return RedirectToAction("Index");
             };
-
-            ModelState.AddModelError("", "New profile could not be created.");
 
             return View(model);
         }
 
         public ActionResult Details(int id)
         {
-            var svc = CreateProfileService();
-            var model = svc.GetProfileById(id);
+            var svc = CreateReservationService();
+            var model = svc.GetReservationById(id);
 
             return View(model);
         }
 
         public ActionResult Edit(int id)
         {
-            var service = CreateProfileService();
-            var detail = service.GetProfileById(id);
+            var service = CreateReservationService();
+            var detail = service.GetReservationById(id);
             var model =
-                new ProfileEdit
+                new ReservationEdit
                 {
+                    ReservationId = detail.ReservationId,
                     ProfileId = detail.ProfileId,
-                    FirstName = detail.FirstName,
-                    LastName = detail.LastName,
-                    Email = detail.Email,
-                    PhoneNumber = detail.PhoneNumber
+                    UnitId = detail.UnitId,
+                    ReservationStartDate = detail.ReservationStartDate,
+                    ReservationEndDate = detail.ReservationEndDate
                 };
+
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, ProfileEdit model)
+        public ActionResult Edit(int id, ReservationEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if(model.ProfileId != id)
+            if(model.ReservationId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
 
-            var service = CreateProfileService();
+            var service = CreateReservationService();
 
-            if (service.UpdateProfile(model))
+            if (service.UpdateReservation(model))
             {
-                TempData["SaveResult"] = "The Profile was updated.";
+                TempData["SaveResult"] = "The reservation was updated.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Your profile could not be updated.");
+            ModelState.AddModelError("", "The reservation could not be updated.");
             return View(model);
         }
 
         public ActionResult Delete(int id)
         {
-            var svc = CreateProfileService();
-            var model = svc.GetProfileById(id);
+            var svc = CreateReservationService();
+            var model = svc.GetReservationById(id);
 
             return View(model);
         }
@@ -105,21 +104,22 @@ namespace BitcoinBeach.WebMVC.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteProfile(int id)
+        public ActionResult DeleteReservation(int id)
         {
-            var service = CreateProfileService();
+            var service = CreateReservationService();
 
-            service.DeleteProfile(id);
+            service.DeleteReservation(id);
 
-            TempData["SaveResult"] = "The account was deleted";
+            TempData["SaveResult"] = "The reservation was deleted";
 
             return RedirectToAction("Index");
         }
 
-        private ProfileService CreateProfileService()
+
+        private ReservationService CreateReservationService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new ProfileService(userId);
+            var service = new ReservationService(userId);
             return service;
         }
     }

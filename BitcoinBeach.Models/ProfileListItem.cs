@@ -7,26 +7,24 @@ using System.Threading.Tasks;
 
 namespace BitcoinBeach.Models
 {
-    public class ProfileCreate
-    { 
-        [Required]
-        [Display(Name ="First Name")]
+    public class ProfileListItem
+    {
+        [Display(Name="Profile ID")]
+        public int ProfileId { get; set; }
+
+        [Display(Name="First Name")]
         public string FirstName { get; set; }
 
-        [Required]
-        [Display(Name = "Last Name")]
+        [Display(Name ="Last Name")]
         public string LastName { get; set; }
 
-        [Required]
-        [Display(Name = "Email Address")]
+        [Display(Name="Email Address")]
         public string Email { get; set; }
 
-        [Required]
-        [Display(Name = "Phone Number")]
+        [Display(Name="Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [Required]
-        [Display(Name = "Account Type")]
-        public AccountType AccountType { get; set; }
+        [Display(Name="Account Type")]
+        public ProfileType AccountType {get; set; }
     }
 }
