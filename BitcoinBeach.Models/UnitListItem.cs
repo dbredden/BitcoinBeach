@@ -19,6 +19,7 @@ namespace BitcoinBeach.Models
         public string Address { get; set; }
 
         [Display(Name="Price in Bitcoin")]
+        [DisplayFormat(DataFormatString = "{0:n8}")]
         public decimal Price { get; set; }
 
         [Display(Name="Maximum Guests")]

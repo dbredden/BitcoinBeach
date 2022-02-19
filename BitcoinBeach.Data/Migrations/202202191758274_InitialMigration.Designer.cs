@@ -7,13 +7,13 @@ namespace BitcoinBeach.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddReservationTable : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddReservationTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202202180153492_AddReservationTable"; }
+            get { return "202202191758274_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

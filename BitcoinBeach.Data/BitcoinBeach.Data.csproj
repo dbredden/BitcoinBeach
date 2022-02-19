@@ -58,21 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202202180004442_InitialMigration.cs" />
-    <Compile Include="Migrations\202202180004442_InitialMigration.designer.cs">
-      <DependentUpon>202202180004442_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202180153492_AddReservationTable.cs" />
-    <Compile Include="Migrations\202202180153492_AddReservationTable.designer.cs">
-      <DependentUpon>202202180153492_AddReservationTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202180236167_UpdateReservationTable.cs" />
-    <Compile Include="Migrations\202202180236167_UpdateReservationTable.designer.cs">
-      <DependentUpon>202202180236167_UpdateReservationTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202180319517_ReservationMigration2.cs" />
-    <Compile Include="Migrations\202202180319517_ReservationMigration2.designer.cs">
-      <DependentUpon>202202180319517_ReservationMigration2.cs</DependentUpon>
+    <Compile Include="Migrations\202202191758274_InitialMigration.cs" />
+    <Compile Include="Migrations\202202191758274_InitialMigration.designer.cs">
+      <DependentUpon>202202191758274_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Profile.cs" />
@@ -91,17 +79,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202202180004442_InitialMigration.resx">
-      <DependentUpon>202202180004442_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202180153492_AddReservationTable.resx">
-      <DependentUpon>202202180153492_AddReservationTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202180236167_UpdateReservationTable.resx">
-      <DependentUpon>202202180236167_UpdateReservationTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202180319517_ReservationMigration2.resx">
-      <DependentUpon>202202180319517_ReservationMigration2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202202191758274_InitialMigration.resx">
+      <DependentUpon>202202191758274_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

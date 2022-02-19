@@ -25,6 +25,7 @@ namespace BitcoinBeach.Models
 
         [Required]
         [Display(Name = "Price in Bitcoin")]
+        [DisplayFormat(DataFormatString = "{0:n8}")]
         public decimal Price { get; set; }
 
         [Required]
