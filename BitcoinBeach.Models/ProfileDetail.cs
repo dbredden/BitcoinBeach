@@ -9,7 +9,7 @@ namespace BitcoinBeach.Models
 {
     public class ProfileDetail
     {
-        [Display(Name="Account ID")]
+        [Display(Name="Profile ID")]
         public int ProfileId { get; set; }
 
         [Display(Name ="First Name")]
@@ -25,6 +25,6 @@ namespace BitcoinBeach.Models
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Account Type")]
-        public ProfileType ProfileType { get; set; }
+        public ProfileType AccountType { get; set; }
     }
 }

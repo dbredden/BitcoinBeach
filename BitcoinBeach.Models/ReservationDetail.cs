@@ -9,8 +9,13 @@ namespace BitcoinBeach.Models
 {
     public class ReservationDetail
     {
+        [Display(Name ="Reservation ID")]
         public int ReservationId { get; set; }
+
+        [Display(Name ="Profile ID")]
         public int ProfileId { get; set; }
+
+        [Display(Name ="Unit ID")]
         public int UnitId { get; set; }
 
         [Display(Name="Reservation Start Date")]

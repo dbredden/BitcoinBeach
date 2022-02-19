@@ -56,7 +56,7 @@ namespace BitcoinBeach.Services
                                     LastName = e.LastName,
                                     Email = e.Email,
                                     PhoneNumber = e.PhoneNumber,
-                                    ProfileType = e.ProfileType
+                                    AccountType = e.ProfileType
                                 }
                         );
 
@@ -80,7 +80,7 @@ namespace BitcoinBeach.Services
                             LastName = entity.LastName,
                             Email = entity.Email,
                             PhoneNumber = entity.PhoneNumber,
-                            ProfileType = entity.ProfileType
+                            AccountType = entity.ProfileType
                         };
             }
         }
